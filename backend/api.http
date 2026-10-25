@@ -1,0 +1,17 @@
+@host = http://localhost:5080
+
+### Registrar / Register
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{ "name": "Ana", "email": "ana@example.com", "phone": "11999990000", "password": "Senha1234" }
+
+### Login
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{ "email": "ana@example.com", "password": "Senha1234" }
+
+### Saldo / Account (cole o token / paste token)
+GET {{host}}/api/accounts/me
+Authorization: Bearer {{token}}

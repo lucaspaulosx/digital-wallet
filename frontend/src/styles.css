@@ -1,0 +1,123 @@
+:root {
+  --bg: #f4f6f9;
+  --surface: #ffffff;
+  --text: #1c2430;
+  --muted: #6b7686;
+  --brand: #0b6e4f;
+  --brand-dark: #08523b;
+  --danger: #b3261e;
+  --border: #dde3ea;
+  --credit: #0b6e4f;
+  --debit: #b3261e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.topbar nav { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.topbar a { color: var(--muted); text-decoration: none; }
+.topbar a.active, .topbar a:hover { color: var(--brand); }
+.brand { font-weight: 700; color: var(--brand) !important; }
+
+.container { max-width: 760px; margin: 1.5rem auto; padding: 0 1rem; display: grid; gap: 1rem; }
+.footer { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 1.5rem 1rem; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+.card.narrow { max-width: 460px; width: 100%; margin: 0 auto; }
+h1 { font-size: 1.4rem; margin: 0 0 1rem; }
+h2 { font-size: 1.1rem; margin: 0 0 0.75rem; }
+
+form { display: grid; gap: 0.9rem; }
+label { display: grid; gap: 0.3rem; font-size: 0.9rem; font-weight: 600; }
+input {
+  font: inherit;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+}
+input:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid #8fd3b6; outline-offset: 1px; }
+
+button {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.65rem 1rem;
+  border: 0;
+  border-radius: 8px;
+  background: var(--brand);
+  color: #fff;
+  cursor: pointer;
+}
+button:hover:not(:disabled) { background: var(--brand-dark); }
+button:disabled { opacity: 0.55; cursor: not-allowed; }
+button.secondary { background: #e6efe9; color: var(--brand-dark); margin-bottom: 0.75rem; }
+button.link { background: none; color: var(--muted); padding: 0; font-weight: 500; }
+button.link:hover:not(:disabled) { background: none; color: var(--brand); }
+
+.muted { color: var(--muted); font-size: 0.9rem; }
+.error { color: var(--danger); margin: 0; }
+.success { color: var(--brand-dark); margin: 0; }
+.hint { background: #fff7e0; border: 1px solid #f0dc9b; border-radius: 8px; padding: 0.6rem 0.8rem; }
+
+.label { margin: 0.5rem 0 0; color: var(--muted); font-size: 0.85rem; }
+.balance { font-size: 2rem; font-weight: 700; margin: 0 0 0.5rem; }
+
+.actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; }
+.action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 1rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+}
+.action:hover { border-color: var(--brand); color: var(--brand); }
+.action-icon { font-size: 1.5rem; color: var(--brand); line-height: 1; }
+
+.statement { list-style: none; margin: 0; padding: 0; }
+.statement li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-top: 1px solid var(--border); }
+.statement li:first-child { border-top: 0; }
+.statement small { display: block; }
+.credit { color: var(--credit); font-weight: 600; }
+.debit { color: var(--debit); font-weight: 600; }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+th, td { text-align: left; padding: 0.55rem 0.4rem; border-top: 1px solid var(--border); }
+th { color: var(--muted); font-weight: 600; border-top: 0; }
+.num { text-align: right; }
+
+.summary { display: grid; grid-template-columns: 1fr auto; gap: 0.4rem 1rem; margin: 0; }
+.summary dt { color: var(--muted); }
+.summary dd { margin: 0; font-weight: 600; text-align: right; }
+
+@media (max-width: 520px) {
+  .topbar { flex-direction: column; align-items: flex-start; }
+  .card { padding: 1rem; }
+}

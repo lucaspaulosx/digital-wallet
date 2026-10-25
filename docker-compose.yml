@@ -1,0 +1,19 @@
+services:
+  api:
+    build:
+      context: ./backend
+      dockerfile: src/CarteiraDigital.Api/Dockerfile
+    environment:
+      Jwt__Key: ${JWT_KEY:?defina JWT_KEY no .env}
+      Seed__AdminEmail: admin@carteira.local
+      Seed__AdminPassword: ${ADMIN_PASSWORD:-Admin#12345}
+    volumes:
+      - dbdata:/data
+  web:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+volumes:
+  dbdata:
